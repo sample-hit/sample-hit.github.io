@@ -1,10 +1,324 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Sample.hit | Documentation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample.hit | Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff6a00;
+            border-radius: 10px;
+        }
+
+        .sidebar {
+            width: 300px;
+            background-color: #161616;
+            border-right: 1px solid #222;
+            display: flex;
+            flex-direction: column;
+            padding: 30px 20px;
+            z-index: 10;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .main-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .main-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ff6a00;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid #222;
+            color: #888;
+            padding: 15px 20px;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .tab-btn:hover {
+            background: #1f1f1f;
+            color: #ff6a00;
+            border-color: #ff6a00;
+            transform: translateX(10px);
+        }
+
+        .tab-btn.active {
+            background: #ff6a00;
+            color: #000;
+            border-color: #ff6a00;
+            box-shadow: 0 0 20px rgba(255, 106, 0, 0.2);
+        }
+
+        .content-area {
+            flex: 1;
+            padding: 60px;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #ff6a00;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        p {
+            line-height: 1.8;
+            color: #cccccc;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #ff6a00;
+            font-weight: 600;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #ff6a00;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .feature-item:hover {
+            background: #252525;
+            transform: scale(1.05);
+        }
+
+        .price-card {
+            background: linear-gradient(145deg, #1a1a1a, #111);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .price-tag {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ff6a00;
+            margin: 20px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6a00;
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 106, 0, 0.4);
+        }
+
+        .credits-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .credit-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .credit-card:hover {
+            background: #222;
+            border-color: #ff6a00;
+        }
+
+        .credit-card img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .id-badge {
+            font-family: monospace;
+            background: #000;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #ff6a00;
+            font-size: 0.8rem;
+        }
+    </style>
 </head>
 <body>
-  <h1>Chaper</h1>
-  <p>This is my GitHub.io website.</p>
+
+    <div class="sidebar">
+        <div class="logo-container">
+            <img src="https://i.ibb.co/MxdjWX42/image.png" alt="Sample Logo" class="main-logo">
+            <div class="site-title">Sample.hit</div>
+        </div>
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'what')">What is this?</button>
+            <button class="tab-btn" onclick="openTab(event, 'get')">How to get</button>
+            <button class="tab-btn" onclick="openTab(event, 'credits')">Credits</button>
+        </div>
+    </div>
+
+    <div class="content-area">
+        <div id="what" class="tab-content active">
+            <h2>The New Era of Da Hood</h2>
+            <p>
+                <span class="highlight">Sample.hit</span> is not just another Da Hood script. It is a meticulously crafted powerhouse designed to dominate the competition. While other scripts plateau, Sample.hit evolves, standing toe-to-toe with giants like <span class="highlight">Unnamed Enhancements</span>, <span class="highlight">Juju.lol</span>, and <span class="highlight">Symbol.hit</span>.
+            </p>
+            <p>
+                With a finely tuned configuration, you can consistently outperform Unnamed and Juju users. Our advanced algorithms allow you to challenge even the most elite players using Symbol, pushing the limits of what is possible in the game.
+            </p>
+            <div class="feature-grid">
+                <div class="feature-item">Aimbot & Silent Aim</div>
+                <div class="feature-item">Magic Bullet</div>
+                <div class="feature-item">Ragebot / Triggerbot</div>
+                <div class="feature-item">Network Desync</div>
+                <div class="feature-item">Fake Position</div>
+                <div class="feature-item">Advanced Resolvers</div>
+                <div class="feature-item">Optimized Visuals</div>
+                <div class="feature-item">Multiple Desync Modes</div>
+            </div>
+        </div>
+
+        <div id="get" class="tab-content">
+            <h2>Acquire Sample.hit</h2>
+            <div class="price-card">
+                <p>Elite performance at an unbeatable price.</p>
+                <div class="price-tag">$2.99 / 600 Robux</div>
+                <p><span class="highlight">LIFETIME ACCESS</span></p>
+                <p>Join our community to purchase and get instant access to the script loader.</p>
+                <a href="https://dsc.gg/sample" class="cta-button" target="_blank">GET IT NOW</a>
+            </div>
+        </div>
+
+        <div id="credits" class="tab-content">
+            <h2>The Team</h2>
+            <div class="credits-container">
+                <div class="credit-card">
+                    <img src="https://i.ibb.co/SDhcDXLc/image.png" alt="Dev Logo">
+                    <div>
+                        <div style="font-weight: 800; font-size: 1.2rem;">Owner & Developer</div>
+                        <div style="color: #ff6a00;">@3fwu <span class="id-badge">894142261393252373</span></div>
+                    </div>
+                </div>
+                <div class="credit-card">
+                    <img src="https://i.ibb.co/SDhcDXLc/image.png" alt="Dev Logo">
+                    <div>
+                        <div style="font-weight: 800; font-size: 1.2rem;">Co-Owner</div>
+                        <div style="color: #ff6a00;">@sillyfade <span class="id-badge">1250923728473296957</span></div>
+                    </div>
+                </div>
+                <a href="https://dsc.gg/sample" style="color: #ff6a00; text-decoration: none; font-weight: 600;">Join our Discord: dsc.gg/sample</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            
+            document.querySelector('.content-area').scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
 </body>
 </html>
