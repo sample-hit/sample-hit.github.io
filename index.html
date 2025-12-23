@@ -129,6 +129,13 @@
             font-weight: 800;
         }
 
+        h3 {
+            margin: 40px 0 20px 0;
+            color: #ff6a00;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
         p {
             line-height: 1.8;
             color: #cccccc;
@@ -141,25 +148,66 @@
             font-weight: 600;
         }
 
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
+        .accordion-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
         }
 
-        .feature-item {
+        .accordion-item {
             background: #1a1a1a;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 3px solid #ff6a00;
-            font-size: 0.9rem;
-            transition: 0.3s;
+            border: 1px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .feature-item:hover {
-            background: #252525;
-            transform: scale(1.05);
+        .accordion-item:hover {
+            border-color: #ff6a00;
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 18px 25px;
+            background: none;
+            border: none;
+            color: #fff;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header span {
+            transition: transform 0.3s ease;
+            color: #ff6a00;
+        }
+
+        .accordion-item.active .accordion-header span {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #141414;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 300px;
+        }
+
+        .inner-text {
+            padding: 20px 25px;
+            color: #aaa;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            border-top: 1px solid #222;
         }
 
         .price-card {
@@ -248,27 +296,59 @@
 
     <div class="content-area">
         <div id="what" class="tab-content active">
-            <h2>The New Era of Da Hood</h2>
+            <h2>The New Era of Da Hood - Sample.hit</h2>
             <p>
                 <span class="highlight">Sample.hit</span> is a high end Da Hood script, and not just any ordinary one. It stands out because it’s built to compete directly with some of the biggest and most well known scripts in the exploiting community, such as <span class="highlight">Unnamed Enhancements</span>, <span class="highlight">Juju.lol</span>, and <span class="highlight">Symbol.hit</span>.
             </p>
             <p>
                 What makes Sample.hit special is how strong and consistent it is when properly configured. With the right setup and game sense, you can reliably outperform Unnamed and Juju, and even go head to head with Symbol which remains one of the hardest scripts to beat, though Sample.hit can still challenge it in certain situations.
             </p>
-            <div class="feature-grid">
-                <div class="feature-item">Aimbot</div>
-                <div class="feature-item">Silent Aim</div>
-                <div class="feature-item">Magic Bullet</div>
-                <div class="feature-item">Ragebot</div>
-                <div class="feature-item">Alot of ragebot resolvers</div>
-                <div class="feature-item">Triggerbot</div>
-                <div class="feature-item">Network Desync</div>
-                <div class="feature-item">Fake Position</div>
-                <div class="feature-item">Advanced Resolvers</div>
-                <div class="feature-item">Optimized Visuals</div>
-                <div class="feature-item">Multiple Desync Modes</div>
+            <h3>Features you may like that is in the script</h3>
+            <div class="accordion-container">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">Aimbot <span>▼</span></button>
+                    <div class="accordion-content">
+                        <div class="inner-text">Our Aimbot features advanced smoothing, field-of-view (FOV) customization, and part selection to ensure you hit every shot while maintaining a stealthy or aggressive profile.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">Silent Aim <span>▼</span></button>
+                    <div class="accordion-content">
+                        <div class="inner-text">Redefine your gameplay with Silent Aim that redirects bullets to your target without snapping your camera, making it look perfectly natural.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">Magic Bullet <span>▼</span></button>
+                    <div class="accordion-content">
+                        <div class="inner-text">Break the laws of the game with Magic Bullet, allowing your projectiles to reach targets through obstacles and barriers with ease.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">Ragebot & Resolvers <span>▼</span></button>
+                    <div class="accordion-content">
+                        <div class="inner-text">Designed for the most intense battles, our Ragebot includes a massive library of resolvers to counter anti-aims and complex movement scripts.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">Desync & Fake Position <span>▼</span></button>
+                    <div class="accordion-content">
+                        <div class="inner-text">Become a ghost on the server. Manipulate your network data to desync your character or project a fake position to confuse enemy aimbots.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">Visuals & Optimization <span>▼</span></button>
+                    <div class="accordion-content">
+                        <div class="inner-text">Beautifully rendered ESP and world visuals that are highly optimized to ensure your FPS stays high while you track every player on the map.</div>
+                    </div>
+                </div>
             </div>
         </div>
+
         <div id="get" class="tab-content">
             <h2>Acquire Sample.hit</h2>
             <div class="price-card">
@@ -320,6 +400,19 @@
                 top: 0,
                 behavior: 'smooth'
             });
+        }
+
+        function toggleAccordion(btn) {
+            const item = btn.parentElement;
+            const wasActive = item.classList.contains('active');
+            
+            document.querySelectorAll('.accordion-item').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            if (!wasActive) {
+                item.classList.add('active');
+            }
         }
     </script>
 </body>
