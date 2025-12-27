@@ -41,12 +41,9 @@
 
         .hero-subtext { color: #888; font-size: 1.2rem; max-width: 600px; margin-bottom: 40px; }
 
-        .btn-container { display: flex; gap: 20px; }
-        .btn { padding: 18px 35px; border-radius: 12px; font-weight: 800; text-decoration: none; transition: 0.3s; cursor: pointer; border: none; font-size: 1rem; }
+        .btn { padding: 18px 60px; border-radius: 12px; font-weight: 800; text-decoration: none; transition: 0.3s; cursor: pointer; border: none; font-size: 1.1rem; }
         .btn-primary { background: var(--primary); color: #000; box-shadow: 0 0 20px rgba(255, 106, 0, 0.3); }
         .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(255, 106, 0, 0.5); }
-        .btn-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid #222; }
-        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: #444; }
 
         /* NOTIFICATIONS */
         .notif {
@@ -69,14 +66,18 @@
         .notif-text b { display: block; font-size: 0.9rem; }
         .notif-text span { font-size: 0.8rem; color: #666; }
 
-        /* DOCUMENTATION SECTION (HIDDEN BY DEFAULT) */
+        /* DOCUMENTATION SECTION */
         #doc-section { display: none; height: 100vh; width: 100%; flex-direction: row; background: #0f0f0f; }
         .sidebar { width: 300px; background: #161616; border-right: 1px solid #222; padding: 30px 20px; display: flex; flex-direction: column; }
         .content-area { flex: 1; padding: 60px; overflow-y: auto; }
-        .tab-btn { background: 0 0; border: 1px solid #222; color: #888; padding: 15px 20px; text-align: left; margin-bottom: 10px; border-radius: 12px; cursor: pointer; transition: 0.3s; }
+        .tab-btn { background: 0 0; border: 1px solid #222; color: #888; padding: 15px 20px; text-align: left; margin-bottom: 10px; border-radius: 12px; cursor: pointer; transition: 0.3s; font-weight: 600; }
         .tab-btn.active { background: var(--primary); color: #000; }
-        .tab-content { display: none; }
+        
+        .tab-content { display: none; max-width: 800px; }
         .tab-content.active { display: block; animation: fadeIn 0.5s; }
+        
+        .small-ui-img { width: 100%; max-width: 450px; border-radius: 12px; border: 1px solid #333; margin-top: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* PRICING GRID */
@@ -87,7 +88,6 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 3rem; }
-            .btn-container { flex-direction: column; width: 80%; }
             #doc-section { flex-direction: column; }
             .sidebar { width: 100%; height: auto; }
             .pricing-grid { grid-template-columns: 1fr; }
@@ -105,8 +105,7 @@
         <p class="hero-subtext">Designed to feel good, look good, and dominate. The next generation of Da Hood exploitation.</p>
         
         <div class="btn-container">
-            <a href="https://sylith.mysellauth.com/product/sample" class="btn btn-primary">Get Lifetime Key</a>
-            <button onclick="showDocs()" class="btn btn-secondary">Documentation</button>
+            <button onclick="showDocs()" class="btn btn-primary">Enter</button>
         </div>
     </div>
 
@@ -118,15 +117,17 @@
             </div>
             <button class="tab-btn active" onclick="openTab(event, 'what')">What is this?</button>
             <button class="tab-btn" onclick="openTab(event, 'get')">Acquire Sample</button>
-            <button class="tab-btn" onclick="openTab(event, 'ui')">UI Gallery</button>
             <button onclick="location.reload()" class="tab-btn" style="margin-top: auto; border-color: #444;">← Back Home</button>
         </div>
 
         <div class="content-area">
             <div id="what" class="tab-content active">
                 <h2 style="font-size: 2.5rem; color: var(--primary); margin-bottom: 20px;">The New Era</h2>
-                <p>Sample.hit is a high-end Da Hood script built to compete with Unnamed, Juju, and Symbol.</p>
-                <p>Everything is optimized for the highest possible performance and frame rates.</p>
+                <p style="line-height: 1.8; color: #ccc; margin-bottom: 15px;">Sample.hit is a top tier Da Hood script made to go head to head with scripts like Unnamed, Juju, and Symbol. It’s built for players who want smooth, reliable performance without sacrificing power or speed.</p>
+                <p style="line-height: 1.8; color: #ccc; margin-bottom: 15px;">Everything in Sample.hit is optimized to run as efficiently as possible, giving you the best frame rates and responsiveness while you play. From targeting to movement, it’s designed to make your gameplay feel effortless and give you an edge over others.</p>
+                <p style="line-height: 1.8; color: #ccc; margin-bottom: 15px;">Whether you’re in intense HVH battles or just messing around, Sample.hit makes everything feel faster, cleaner, and more precise.</p>
+                
+                <img src="https://i.ibb.co/WvtjN983/Captura-de-ecran-din-2025-12-27-la-22-30-57.png" class="small-ui-img" alt="Sample UI">
             </div>
 
             <div id="get" class="tab-content">
@@ -136,20 +137,15 @@
                         <h3>Lifetime Access</h3>
                         <div class="price-tag">$2.99</div>
                         <p style="color: #888; margin-bottom: 20px;">Permanent access to all updates and features.</p>
-                        <a href="https://sylith.mysellauth.com/product/sample" class="btn btn-primary" style="display:block; text-align:center;">Buy Now</a>
+                        <a href="https://sylith.mysellauth.com/product/sample" class="btn btn-primary" style="display:block; text-align:center; padding: 12px;">Buy Now</a>
                     </div>
                     <div class="price-card">
                         <h3>90 Minute Trial</h3>
                         <div class="price-tag">FREE</div>
                         <p style="color: #888; margin-bottom: 20px;">Get a free key by joining our community.</p>
-                        <a href="https://getsample.lol/discord" class="btn btn-secondary" style="display:block; text-align:center;">Get Free Key</a>
+                        <a href="https://getsample.lol/discord" class="btn btn-secondary" style="display:block; text-align:center; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid #333; color: white; border-radius: 12px; text-decoration: none; font-weight: 800;">Get Free Key</a>
                     </div>
                 </div>
-            </div>
-
-            <div id="ui" class="tab-content">
-                <h2>User Interface</h2>
-                <img src="https://i.ibb.co/WvtjN983/Captura-de-ecran-din-2025-12-27-la-22-30-57.png" style="width: 100%; border-radius: 15px; border: 1px solid #333; margin-top: 20px;">
             </div>
         </div>
     </div>
@@ -179,7 +175,6 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // NOTIFICATION LOGIC
         const products = ["Sample Lifetime Key", "Sample Monthly Key", "Sample Trial Key"];
         const times = ["Just now", "2 minutes ago", "Today at 4:20 PM", "Today at 1:09 PM", "Yesterday"];
         
@@ -187,17 +182,12 @@
             const notif = document.getElementById('notification');
             document.getElementById('notif-item').innerText = products[Math.floor(Math.random() * products.length)];
             document.getElementById('notif-time').innerText = times[Math.floor(Math.random() * times.length)];
-            
             notif.classList.add('show');
-            
             setTimeout(() => {
                 notif.classList.remove('show');
-                // Set next random delay between 5 and 30 seconds
                 setTimeout(showRandomNotif, Math.random() * (30000 - 5000) + 5000);
             }, 5000);
         }
-
-        // Start first notification after 3 seconds
         setTimeout(showRandomNotif, 3000);
     </script>
 </body>
