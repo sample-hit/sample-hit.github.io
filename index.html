@@ -2,177 +2,203 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width,initial-scale=1" name="viewport">
-    <title>Sample.hit | Documentation</title>
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample.hit | Experience Magic</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Inter, sans-serif }
-        body { background-color: #0f0f0f; color: #fff; display: flex; height: 100vh; overflow: hidden }
-        ::-webkit-scrollbar { width: 6px }
-        ::-webkit-scrollbar-thumb { background: #ff6a00; border-radius: 10px }
+        :root { --primary: #ff6a00; --secondary: #00ffa3; --bg: #050505; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: #fff; overflow-x: hidden; }
 
-        /* Sidebar Desktop */
-        .sidebar { width: 300px; background-color: #161616; border-right: 1px solid #222; display: flex; flex-direction: column; padding: 30px 20px; z-index: 10; transition: transform 0.3s ease; }
-        .logo-container { text-align: center; margin-bottom: 40px }
-        .main-logo { width: 80px; height: 80px; border-radius: 15px; margin-bottom: 15px; transition: transform .4s cubic-bezier(.175,.885,.32,1.275) }
-        .main-logo:hover { transform: scale(1.1) rotate(5deg) }
-        .site-title { font-size: 1.5rem; font-weight: 800; color: #ff6a00; text-transform: uppercase; letter-spacing: 2px }
-        .nav-tabs { display: flex; flex-direction: column; gap: 15px }
-        
-        .tab-btn { background: 0 0; border: 1px solid #222; color: #888; padding: 15px 20px; text-align: left; font-size: 1rem; font-weight: 600; border-radius: 12px; cursor: pointer; transition: all .3s ease; outline: 0 }
-        .tab-btn:hover { background: #1f1f1f; color: #ff6a00; border-color: #ff6a00; transform: translateX(10px) }
-        .tab-btn.active { background: #ff6a00; color: #000; border-color: #ff6a00; box-shadow: 0 0 20px rgba(255,106,0,.2) }
+        /* HERO SECTION */
+        #landing-page {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(255, 106, 0, 0.05) 0%, rgba(5, 5, 5, 1) 70%);
+            position: relative;
+        }
 
-        .content-area { flex: 1; padding: 60px; overflow-y: auto; scroll-behavior: smooth; position: relative }
-        .tab-content { display: none; animation: fadeIn .6s ease-out forwards }
-        .tab-content.active { display: block }
+        .trusted-badge {
+            background: rgba(0, 255, 163, 0.1);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: translateY(0) } }
+        h1 { font-size: 5rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; }
+        h1 span { color: var(--primary); }
 
-        h2 { font-size: 2.5rem; color: #ff6a00; margin-bottom: 25px; font-weight: 800 }
-        h3 { margin: 40px 0 20px 0; color: #ff6a00; font-size: 1.5rem; text-transform: uppercase }
-        p { line-height: 1.8; color: #ccc; font-size: 1.1rem; margin-bottom: 20px }
-        .highlight { color: #ff6a00; font-weight: 600 }
+        .hero-subtext { color: #888; font-size: 1.2rem; max-width: 600px; margin-bottom: 40px; }
 
-        /* Accordion */
-        .accordion-container { display: flex; flex-direction: column; gap: 12px; margin-top: 20px }
-        .accordion-item { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; overflow: hidden; transition: all .3s ease }
-        .accordion-item:hover { border-color: #ff6a00 }
-        .accordion-header { width: 100%; padding: 18px 25px; background: 0 0; border: none; color: #fff; text-align: left; font-size: 1.1rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center }
-        .accordion-header span { transition: transform .3s ease; color: #ff6a00 }
-        .accordion-item.active .accordion-header span { transform: rotate(180deg) }
-        .accordion-content { max-height: 0; overflow: hidden; transition: max-height .4s cubic-bezier(.4,0,.2,1); background: #141414 }
-        .accordion-item.active .accordion-content { max-height: 500px }
-        .inner-text { padding: 20px 25px; color: #aaa; line-height: 1.6; font-size: .95rem; border-top: 1px solid #222 }
+        .btn-container { display: flex; gap: 20px; }
+        .btn { padding: 18px 35px; border-radius: 12px; font-weight: 800; text-decoration: none; transition: 0.3s; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-primary { background: var(--primary); color: #000; box-shadow: 0 0 20px rgba(255, 106, 0, 0.3); }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(255, 106, 0, 0.5); }
+        .btn-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid #222; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: #444; }
 
-        /* Price Card */
-        .price-card { background: linear-gradient(145deg,#1a1a1a,#111); padding: 40px; border-radius: 20px; border: 1px solid #333; text-align: center; max-width: 500px; margin: 0 auto; }
-        .price-tag { font-size: 3rem; font-weight: 800; color: #ff6a00; margin: 20px 0 }
-        .cta-button { display: inline-block; background: #ff6a00; color: #000; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 800; margin-top: 20px; transition: all .3s }
-        .cta-button:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(255,106,0,.4) }
+        /* NOTIFICATIONS */
+        .notif {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #111;
+            border: 1px solid #222;
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transform: translateX(-150%);
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+        }
+        .notif.show { transform: translateX(0); }
+        .notif-img { width: 45px; height: 45px; border-radius: 8px; background: var(--primary); }
+        .notif-text b { display: block; font-size: 0.9rem; }
+        .notif-text span { font-size: 0.8rem; color: #666; }
 
-        /* Credits */
-        .credits-container { display: flex; flex-direction: column; gap: 20px }
-        .credit-card { display: flex; align-items: center; gap: 20px; background: #1a1a1a; padding: 20px; border-radius: 15px; transition: .3s }
-        .credit-card:hover { background: #222; border-color: #ff6a00 }
-        .credit-card img { width: 50px; height: 50px; border-radius: 50% }
-        .id-badge { font-family: monospace; background: #000; padding: 2px 8px; border-radius: 4px; color: #ff6a00; font-size:.8rem }
+        /* DOCUMENTATION SECTION (HIDDEN BY DEFAULT) */
+        #doc-section { display: none; height: 100vh; width: 100%; flex-direction: row; background: #0f0f0f; }
+        .sidebar { width: 300px; background: #161616; border-right: 1px solid #222; padding: 30px 20px; display: flex; flex-direction: column; }
+        .content-area { flex: 1; padding: 60px; overflow-y: auto; }
+        .tab-btn { background: 0 0; border: 1px solid #222; color: #888; padding: 15px 20px; text-align: left; margin-bottom: 10px; border-radius: 12px; cursor: pointer; transition: 0.3s; }
+        .tab-btn.active { background: var(--primary); color: #000; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* MOBILE SUPPORT */
-        @media (max-width: 850px) {
-            body { flex-direction: column; overflow-y: auto; height: auto; }
-            .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid #222; padding: 20px; position: sticky; top: 0; }
-            .logo-container { margin-bottom: 20px; display: flex; align-items: center; gap: 15px; text-align: left; }
-            .main-logo { width: 50px; height: 50px; margin-bottom: 0; }
-            .site-title { font-size: 1.2rem; }
-            .nav-tabs { flex-direction: row; overflow-x: auto; padding-bottom: 5px; -webkit-overflow-scrolling: touch; }
-            .tab-btn { white-space: nowrap; padding: 10px 15px; font-size: 0.9rem; }
-            .tab-btn:hover { transform: none; }
-            .content-area { padding: 30px 20px; height: auto; overflow-y: visible; }
-            h2 { font-size: 1.8rem; }
-            .price-card { padding: 25px; width: 100%; }
+        /* PRICING GRID */
+        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+        .price-card { background: #161616; padding: 30px; border-radius: 20px; border: 1px solid #222; transition: 0.3s; }
+        .price-card:hover { border-color: var(--primary); }
+        .price-tag { font-size: 2rem; font-weight: 800; color: var(--primary); margin: 15px 0; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .btn-container { flex-direction: column; width: 80%; }
+            #doc-section { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; }
+            .pricing-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<div class="sidebar">
-    <div class="logo-container">
-        <img alt="Sample Logo" src="https://i.ibb.co/MxdjWX42/image.png" class="main-logo">
-        <div class="site-title">Sample.hit</div>
-    </div>
-    <div class="nav-tabs">
-        <button class="tab-btn active" onclick="openTab(event,'what')">What is this?</button> 
-        <button class="tab-btn" onclick="openTab(event,'get')">How to get</button> 
-        <button class="tab-btn" onclick="openTab(event,'credits')">Credits</button>
-    </div>
-</div>
-
-<div class="content-area">
-    <div class="tab-content active" id="what">
-        <h2>The New Era of Da Hood - Sample.hit</h2>
-        <p><span class="highlight">Sample.hit</span> is a high end Da Hood script, and not just any ordinary one. It stands out because it’s built to compete directly with some of the biggest and most well known scripts in the exploiting community, such as <span class="highlight">Unnamed Enhancements</span>, <span class="highlight">Juju.lol</span>, and <span class="highlight">Symbol.hit</span>.</p>
-        <p>What makes Sample.hit special is how strong and consistent it is when properly configured. With the right setup and game sense, you can reliably outperform Unnamed and Juju, and even go head to head with Symbol which remains one of the hardest scripts to beat, though Sample.hit can still challenge it in certain situations.</p>
-        <h3>Features you may like</h3>
-        <div class="accordion-container">
-            <div class="accordion-item"><button class="accordion-header" onclick="toggleAccordion(this)">Aimbot <span>▼</span></button><div class="accordion-content"><div class="inner-text">Smoothness, Prediction (x,y,z), Shaking, Hitpart, Strafe while locked</div></div></div>
-            <div class="accordion-item"><button class="accordion-header" onclick="toggleAccordion(this)">Silent Aim <span>▼</span></button><div class="accordion-content"><div class="inner-text">Knock check, Wall Check, Show fov, Fov size, Use normal hitpart (head, torso etc), use custom hitpart (closest part, closest point), hitchance</div></div></div>
-            <div class="accordion-item"><button class="accordion-header" onclick="toggleAccordion(this)">Magic Bullet <span>▼</span></button><div class="accordion-content"><div class="inner-text">Show fov, fov size</div></div></div>
-            <div class="accordion-item"><button class="accordion-header" onclick="toggleAccordion(this)">Ragebot<span>▼</span></button><div class="accordion-content"><div class="inner-text">Target picker, Strafe random offset, aggressive strafe offset, prediction, prediction breaker, backtrack resolver, backtrack adjuster, anti fakepos resolver, isaac newton resolver, velocity resolver, multi weapons, safe mode, set shooter to target, auto execute, spectate, teleport, execute everyone</div></div></div>
-            <div class="accordion-item"><button class="accordion-header" onclick="toggleAccordion(this)">Desyncs<span>▼</span></button><div class="accordion-content"><div class="inner-text">Underground invisible, velocity desync, void desync, network desync, void spam desync, fake position desync, visualizer</div></div></div>
-            <div class="accordion-item"><button class="accordion-header" onclick="toggleAccordion(this)">Visuals<span>▼</span></button><div class="accordion-content"><div class="inner-text">Beautifully rendered ESP and world visuals that are highly optimized to ensure your FPS stays high while you track every player on the map.</div></div></div>
+    <div id="landing-page">
+        <div class="trusted-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2Z"/></svg>
+            Trusted by 5.000+ users
+        </div>
+        <h1>Experience Magic with <span>Sample</span></h1>
+        <p class="hero-subtext">Designed to feel good, look good, and dominate. The next generation of Da Hood exploitation.</p>
+        
+        <div class="btn-container">
+            <a href="https://sylith.mysellauth.com/product/sample" class="btn btn-primary">Get Lifetime Key</a>
+            <button onclick="showDocs()" class="btn btn-secondary">Documentation</button>
         </div>
     </div>
 
-    <div class="tab-content" id="get">
-        <h2>Acquire Sample.hit</h2>
-        <div class="price-card">
-            <p>Elite performance at an unbeatable price.</p>
-            <div class="price-tag">$2.99 / 600 Robux</div>
-            <p><span class="highlight">LIFETIME ACCESS</span></p>
-            <p>Join our community to purchase and get instant access to the script loader.</p>
-            <a href="https://dsc.gg/sample" class="cta-button" target="_blank">GET IT NOW</a>
+    <div id="doc-section">
+        <div class="sidebar">
+            <div style="margin-bottom: 40px; text-align: center;">
+                <img src="https://i.ibb.co/MxdjWX42/image.png" style="width:60px; border-radius: 12px;">
+                <h2 style="color: var(--primary); margin-top: 10px;">Sample.hit</h2>
+            </div>
+            <button class="tab-btn active" onclick="openTab(event, 'what')">What is this?</button>
+            <button class="tab-btn" onclick="openTab(event, 'get')">Acquire Sample</button>
+            <button class="tab-btn" onclick="openTab(event, 'ui')">UI Gallery</button>
+            <button onclick="location.reload()" class="tab-btn" style="margin-top: auto; border-color: #444;">← Back Home</button>
         </div>
-    </div>
 
-    <div class="tab-content" id="credits">
-        <h2>The Team</h2>
-        <div class="credits-container">
-            <div class="credit-card">
-                <img alt="Dev Logo" src="https://i.ibb.co/SDhcDXLc/image.png">
-                <div>
-                    <div style="font-weight:800;font-size:1.2rem">Owner & Developer</div>
-                    <div style="color:#ff6a00">@3fwu <span class="id-badge">894142261393252373</span></div>
+        <div class="content-area">
+            <div id="what" class="tab-content active">
+                <h2 style="font-size: 2.5rem; color: var(--primary); margin-bottom: 20px;">The New Era</h2>
+                <p>Sample.hit is a high-end Da Hood script built to compete with Unnamed, Juju, and Symbol.</p>
+                <p>Everything is optimized for the highest possible performance and frame rates.</p>
+            </div>
+
+            <div id="get" class="tab-content">
+                <h2>Choose your Plan</h2>
+                <div class="pricing-grid">
+                    <div class="price-card">
+                        <h3>Lifetime Access</h3>
+                        <div class="price-tag">$2.99</div>
+                        <p style="color: #888; margin-bottom: 20px;">Permanent access to all updates and features.</p>
+                        <a href="https://sylith.mysellauth.com/product/sample" class="btn btn-primary" style="display:block; text-align:center;">Buy Now</a>
+                    </div>
+                    <div class="price-card">
+                        <h3>90 Minute Trial</h3>
+                        <div class="price-tag">FREE</div>
+                        <p style="color: #888; margin-bottom: 20px;">Get a free key by joining our community.</p>
+                        <a href="https://getsample.lol/discord" class="btn btn-secondary" style="display:block; text-align:center;">Get Free Key</a>
+                    </div>
                 </div>
             </div>
-            <div class="credit-card">
-                <img alt="Dev Logo" src="https://i.ibb.co/SDhcDXLc/image.png">
-                <div>
-                    <div style="font-weight:800;font-size:1.2rem">Co-Owner</div>
-                    <div style="color:#ff6a00">@sillyfade <span class="id-badge">1250923728473296957</span></div>
-                </div>
+
+            <div id="ui" class="tab-content">
+                <h2>User Interface</h2>
+                <img src="https://i.ibb.co/WvtjN983/Captura-de-ecran-din-2025-12-27-la-22-30-57.png" style="width: 100%; border-radius: 15px; border: 1px solid #333; margin-top: 20px;">
             </div>
-            <a href="https://dsc.gg/sample" style="color:#ff6a00;text-decoration:none;font-weight:600">Join our Discord: dsc.gg/sample</a>
         </div>
     </div>
-</div>
 
-<script>
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].classList.remove("active");
+    <div id="notification" class="notif">
+        <div class="notif-img"></div>
+        <div class="notif-text">
+            <b id="notif-title">Someone purchased</b>
+            <span id="notif-item">Sample Lifetime Key</span>
+            <span id="notif-time" style="display:block; margin-top:4px;">Today at 5:04 PM</span>
+        </div>
+    </div>
+
+    <script>
+        function showDocs() {
+            document.getElementById('landing-page').style.display = 'none';
+            document.getElementById('doc-section').style.display = 'flex';
         }
-        tablinks = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("active");
+
+        function openTab(evt, tabName) {
+            let i, content, tabs;
+            content = document.getElementsByClassName("tab-content");
+            for (i = 0; i < content.length; i++) content[i].classList.remove("active");
+            tabs = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabs.length; i++) tabs[i].classList.remove("active");
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
         }
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
+
+        // NOTIFICATION LOGIC
+        const products = ["Sample Lifetime Key", "Sample Monthly Key", "Sample Trial Key"];
+        const times = ["Just now", "2 minutes ago", "Today at 4:20 PM", "Today at 1:09 PM", "Yesterday"];
         
-        // Mobile scroll fix: scroll to top of content when tab clicked
-        if (window.innerWidth <= 850) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-            document.querySelector('.content-area').scrollTo({ top: 0, behavior: 'smooth' });
+        function showRandomNotif() {
+            const notif = document.getElementById('notification');
+            document.getElementById('notif-item').innerText = products[Math.floor(Math.random() * products.length)];
+            document.getElementById('notif-time').innerText = times[Math.floor(Math.random() * times.length)];
+            
+            notif.classList.add('show');
+            
+            setTimeout(() => {
+                notif.classList.remove('show');
+                // Set next random delay between 5 and 30 seconds
+                setTimeout(showRandomNotif, Math.random() * (30000 - 5000) + 5000);
+            }, 5000);
         }
-    }
 
-    function toggleAccordion(btn) {
-        const item = btn.parentElement;
-        const wasActive = item.classList.contains('active');
-        
-        document.querySelectorAll('.accordion-item').forEach(el => {
-            el.classList.remove('active');
-        });
-
-        if (!wasActive) {
-            item.classList.add('active');
-        }
-    }
-</script>
+        // Start first notification after 3 seconds
+        setTimeout(showRandomNotif, 3000);
+    </script>
 </body>
 </html>
