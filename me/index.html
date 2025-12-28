@@ -8,9 +8,9 @@
     <style>
         :root {
             --accent: #ff6a00;
-            --bg: #080808;
-            --glass: rgba(15, 15, 15, 0.75);
-            --border: rgba(255, 255, 255, 0.1);
+            --bg: #050505;
+            --glass: rgba(10, 10, 10, 0.65);
+            --border: rgba(255, 255, 255, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,37 +26,46 @@
             align-items: center;
         }
 
-        .bg-overlay {
+        /* Rain Background Effect */
+        .background-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, #111 0%, #050505 100%);
+            background: url('https://images.unsplash.com/photo-1428592953211-077101b2021b?q=80&w=2000&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
+            filter: blur(8px) brightness(0.4);
+            z-index: -2;
+            transform: scale(1.1); /* Prevents white edges from blur */
+        }
+
+        .rain-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
             z-index: -1;
         }
 
         .scanlines {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            background-size: 100% 4px, 3px 100%;
+            inset: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%);
+            background-size: 100% 4px;
             pointer-events: none;
             z-index: 10;
+            opacity: 0.4;
         }
 
         #enter-screen {
             position: fixed;
             inset: 0;
-            background: var(--bg);
+            background: #000;
             z-index: 100;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.8s ease;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
         }
 
@@ -64,78 +73,140 @@
 
         .enter-text {
             font-family: 'JetBrains Mono';
-            letter-spacing: 4px;
+            letter-spacing: 8px;
             color: var(--accent);
             text-transform: uppercase;
             font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
         .profile-card {
             background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            width: 480px;
-            padding: 45px;
-            border-radius: 28px;
+            padding: 40px;
+            border-radius: 24px;
             text-align: center;
             position: relative;
             z-index: 20;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            width: 420px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
         }
 
         .pfp {
-            width: 110px;
-            height: 110px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             border: 2px solid var(--accent);
-            padding: 4px;
+            padding: 3px;
             object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0 0 25px rgba(255, 106, 0, 0.2);
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px rgba(255, 106, 0, 0.3));
         }
 
-        h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 5px; }
-        .handle { color: var(--accent); font-family: 'JetBrains Mono'; font-size: 0.9rem; margin-bottom: 25px; display: block; }
-        .bio { font-size: 0.95rem; line-height: 1.7; color: #bbb; margin-bottom: 30px; text-align: left; }
+        h1 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; }
+        .handle { 
+            color: var(--accent); 
+            font-family: 'JetBrains Mono'; 
+            font-size: 0.85rem; 
+            margin-bottom: 15px; 
+            display: block; 
+            opacity: 0.8;
+        }
 
-        .links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 30px; }
-        .link-btn {
-            background: rgba(255,255,255,0.03);
+        /* Social Icons Row */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid var(--border);
+            transition: 0.3s all ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 106, 0, 0.4);
+        }
+
+        .social-link img {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1); /* Makes icons white */
+        }
+        
+        .social-link:hover img {
+            filter: brightness(0); /* Makes icons black on hover */
+        }
+
+        .bio { 
+            font-size: 0.9rem; 
+            line-height: 1.6; 
+            color: #ccc; 
+            margin-bottom: 25px; 
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 2px solid var(--accent);
+            text-align: left;
+        }
+
+        .website-btn {
+            display: block;
+            width: 100%;
+            background: rgba(255,255,255,0.05);
             border: 1px solid var(--border);
             padding: 12px;
-            border-radius: 12px;
+            border-radius: 10px;
             color: #fff;
             text-decoration: none;
             font-size: 0.85rem;
-            transition: 0.3s;
             font-weight: 600;
+            margin-bottom: 20px;
+            transition: 0.3s;
         }
-        .link-btn:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+        .website-btn:hover { background: #fff; color: #000; }
 
         .player-controls {
-            background: rgba(0,0,0,0.3);
+            background: rgba(255,255,255,0.03);
             padding: 15px;
             border-radius: 15px;
             border: 1px solid var(--border);
         }
 
-        .control-btns { display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 15px; }
-        .ctrl-btn { background: none; border: none; color: #fff; cursor: pointer; font-size: 1.1rem; transition: 0.2s; }
+        .control-btns { display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 12px; }
+        .ctrl-btn { background: none; border: none; color: #888; cursor: pointer; font-family: 'JetBrains Mono'; font-size: 0.75rem; transition: 0.2s; }
         .ctrl-btn:hover { color: var(--accent); }
+        #playBtn { font-weight: 800; color: #fff; font-size: 0.85rem; }
 
         .volume-container { display: flex; align-items: center; gap: 10px; justify-content: center; }
         input[type=range] {
             -webkit-appearance: none;
-            width: 100px;
-            height: 4px;
+            width: 80px;
+            height: 2px;
             background: #333;
-            border-radius: 5px;
             outline: none;
         }
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             background: var(--accent);
             border-radius: 50%;
             cursor: pointer;
@@ -144,11 +215,12 @@
 </head>
 <body>
 
+    <div class="background-container"></div>
+    <div class="rain-overlay"></div>
     <div class="scanlines"></div>
-    <div class="bg-overlay"></div>
 
     <div id="enter-screen" onclick="startBio()">
-        <div class="enter-text">[ Click to Load ]</div>
+        <div class="enter-text">CONNECTING...</div>
     </div>
 
     <div class="profile-card">
@@ -156,25 +228,30 @@
         <h1>3fwu</h1>
         <span class="handle">@3fwu</span>
 
+        <div class="social-icons">
+            <a href="https://getsample.lol/discord" class="social-link" title="Discord">
+                <img src="https://i.ibb.co/mCPyrk1L/image.png" alt="Discord">
+            </a>
+            <a href="https://www.youtube.com/@r6base" class="social-link" title="YouTube">
+                <img src="https://i.ibb.co/4Rc1dx1x/image.png" alt="YouTube">
+            </a>
+        </div>
+
         <p class="bio">
-            Hello, I'm a <b>Luau enthusiast</b>. I began my journey messing with exploitation back in 2020, and by 2022, I started taking development more seriously. 
+            Hello, I'm a <b>Luau enthusiast</b>. I began my journey messing with exploitation back in 2020, and by 2022, I started taking development more seriously. 
             <br><br>
-            Today, I am the proud owner of a high end script that has brought me incredible success and allowed me to push the boundaries of what's possible in the scene.
+            Today, I am the proud owner of a high end script that has brought me incredible success.
         </p>
 
-        <div class="links">
-            <a href="https://getsample.lol" class="link-btn">Website</a>
-            <a href="https://getsample.lol/discord" class="link-btn">Script Discord</a>
-        </div>
+        <a href="https://getsample.lol" class="website-btn">LAUNCH WEBSITE</a>
 
         <div class="player-controls">
             <div class="control-btns">
-                <button class="ctrl-btn" onclick="seek(-5)">-5s</button>
-                <button class="ctrl-btn" id="playBtn" onclick="togglePlay()">Pause</button>
-                <button class="ctrl-btn" onclick="seek(5)">+5s</button>
+                <button class="ctrl-btn" onclick="seek(-5)">-5S</button>
+                <button class="ctrl-btn" id="playBtn" onclick="togglePlay()">PAUSE</button>
+                <button class="ctrl-btn" onclick="seek(5)">+5S</button>
             </div>
             <div class="volume-container">
-                <span style="font-size: 0.7rem; color: #666;">VOL</span>
                 <input type="range" min="0" max="1" step="0.01" value="0.5" oninput="updateVolume(this.value)">
             </div>
         </div>
@@ -197,10 +274,10 @@
         function togglePlay() {
             if (audio.paused) {
                 audio.play();
-                playBtn.innerText = "Pause";
+                playBtn.innerText = "PAUSE";
             } else {
                 audio.pause();
-                playBtn.innerText = "Play";
+                playBtn.innerText = "PLAY";
             }
         }
 
