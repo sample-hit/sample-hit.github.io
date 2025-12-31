@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SamplePaste | Dark Mode</title>
+    <title>SamplePaste | Secure Snippets</title>
     <style>
         :root {
             --bg: #0a0a0a;
-            --card: #141414;
-            --field: #1c1c1c;
+            --card: #121212;
+            --field: #050505;
             --text: #e0e0e0;
-            --accent: #ff8c00;
-            --accent-hover: #e67e00;
-            --border: #333333;
+            --accent: #ff4500;
+            --accent-hover: #ff6347;
+            --border: #222222;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
             background-color: var(--bg);
             color: var(--text);
             display: flex;
@@ -28,70 +28,74 @@
 
         .container {
             width: 95%;
-            max-width: 900px;
+            max-width: 1000px;
             background: var(--card);
-            padding: 2rem;
-            border-radius: 8px;
+            padding: 1.5rem;
+            border-radius: 4px;
             border: 1px solid var(--border);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
 
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 1rem;
+            padding-bottom: 10px;
         }
 
         h2 {
             margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         textarea {
             width: 100%;
-            height: 400px;
+            height: 500px;
             background: var(--field);
             border: 1px solid var(--border);
-            border-radius: 4px;
-            color: #dcdcdc;
+            color: #00ff41; 
             padding: 1.2rem;
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
             font-size: 14px;
-            line-height: 1.5;
-            resize: vertical;
+            line-height: 1.6;
+            resize: none;
             box-sizing: border-box;
             outline: none;
-            transition: border-color 0.3s ease;
+            transition: 0.3s;
         }
 
         textarea:focus {
             border-color: var(--accent);
+            box-shadow: inset 0 0 10px rgba(255, 69, 0, 0.1);
         }
 
         .bottom-bar {
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
             gap: 15px;
         }
 
-        .options-group {
+        .settings-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .control-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         label {
-            font-size: 0.85rem;
-            color: #888;
+            font-size: 0.75rem;
+            color: #666;
             text-transform: uppercase;
         }
 
@@ -99,50 +103,45 @@
             background: var(--field);
             color: var(--text);
             border: 1px solid var(--border);
-            padding: 0.6rem;
-            border-radius: 4px;
+            padding: 6px 10px;
             outline: none;
             cursor: pointer;
+            font-family: inherit;
         }
 
         select:focus {
             border-color: var(--accent);
         }
 
-        .btn-primary {
+        button {
             background-color: var(--accent);
             color: #000;
             border: none;
-            padding: 0.8rem 2.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-radius: 4px;
+            padding: 12px 30px;
+            font-weight: 900;
             cursor: pointer;
-            transition: all 0.2s ease;
+            text-transform: uppercase;
+            transition: 0.2s;
+            letter-spacing: 1px;
         }
 
-        .btn-primary:hover {
+        button:hover {
             background-color: var(--accent-hover);
-            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
         }
 
-        .btn-primary:disabled {
-            background-color: #555;
+        button:disabled {
+            background-color: #222;
+            color: #444;
             cursor: not-allowed;
-            transform: none;
+            box-shadow: none;
         }
 
-        /* Status Toast */
-        #status {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background: var(--accent);
-            color: black;
-            border-radius: 4px;
-            font-weight: 600;
+        #copyStatus {
+            color: #00ff41;
+            font-size: 0.8rem;
             display: none;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -150,79 +149,75 @@
 
 <div class="container">
     <header>
-        <h2>New Paste</h2>
-        <div style="font-size: 0.8rem; color: #555;">Guest Session</div>
+        <h2>// CREATE_NEW_PASTE</h2>
+        <div id="copyStatus">LINK COPIED TO CLIPBOARD</div>
     </header>
 
-    <textarea id="paste" placeholder="Enter your text or code here..." spellcheck="false"></textarea>
+    <textarea id="paste" placeholder="Waiting for input..." spellcheck="false"></textarea>
     
     <div class="bottom-bar">
-        <div class="options-group">
-            <label for="expiry">Auto-Delete In:</label>
-            <select id="expiry">
-                <option value="600">10 Minutes</option>
-                <option value="3600">1 Hour</option>
-                <option value="86400">1 Day</option>
-                <option value="604800">1 Week</option>
-                <option value="2592000">1 Month</option>
-                <option value="0">Never (Burn on Read)</option>
-            </select>
+        <div class="settings-group">
+            <div class="control-item">
+                <label>Lifespan:</label>
+                <select id="expiry">
+                    <option value="never">FOREVER (NEVER DELETE)</option>
+                    <option value="burn">BURN ON READ (ONE-TIME VIEW)</option>
+                    <option value="600">10 MINUTES</option>
+                    <option value="3600">1 HOUR</option>
+                    <option value="86400">1 DAY</option>
+                    <option value="604800">1 WEEK</option>
+                    <option value="2592000">1 MONTH</option>
+                </select>
+            </div>
         </div>
 
-        <button id="saveBtn" class="btn-primary" onclick="save()">Create Paste</button>
+        <button id="saveBtn" onclick="save()">Execute Save</button>
     </div>
 </div>
-
-<div id="status">Link Copied to Clipboard!</div>
 
 <script>
 async function save() {
     const btn = document.getElementById("saveBtn");
     const text = document.getElementById("paste").value;
-    const expiry = document.getElementById("expiry").value;
+    const expiryValue = document.getElementById("expiry").value;
     
     if (!text.trim()) {
-        alert("Empty paste content!");
+        alert("TERMINAL ERROR: CONTENT CANNOT BE EMPTY");
         return;
     }
 
     btn.disabled = true;
-    btn.innerText = "Processing...";
+    btn.innerText = "UPLOADING...";
 
     try {
         const response = await fetch("/api/create", {
             method: "POST",
             headers: {
-                "X-Expiration": expiry
+                "X-Expiry": expiryValue 
             },
             body: text
         });
 
-        if (!response.ok) throw new Error("Server error");
+        if (!response.ok) throw new Error("API_REJECTION");
 
         const id = await response.text();
-        const fullUrl = window.location.origin + "/public/" + id;
+        const url = window.location.origin + "/public/" + id;
 
-        // Automatically copy to clipboard for the user
-        await navigator.clipboard.writeText(fullUrl);
+        // Auto-copy to clipboard
+        await navigator.clipboard.writeText(url);
         
-        showToast();
+        document.getElementById("copyStatus").style.display = "block";
 
-        // Redirect after a short delay so they see the success toast
+        // Delay to allow user to see the success message
         setTimeout(() => {
             location.href = "/public/" + id;
-        }, 1500);
+        }, 1000);
 
     } catch (err) {
-        alert("Error saving: " + err.message);
+        alert("CRITICAL ERROR: FAILED TO CONNECT TO DATABASE");
         btn.disabled = false;
-        btn.innerText = "Create Paste";
+        btn.innerText = "Execute Save";
     }
-}
-
-function showToast() {
-    const toast = document.getElementById("status");
-    toast.style.display = "block";
 }
 </script>
 
