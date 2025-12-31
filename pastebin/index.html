@@ -1,25 +1,136 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h2>SamplePaste</h2>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SamplePaste | Minimalist Sharing</title>
+    <style>
+        /* Modern CSS Reset & Variable Setup */
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f8fafc;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+        }
 
-<textarea id="paste" style="width:100%;height:300px"></textarea>
-<br><br>
-<button onclick="save()">Save</button>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            margin-top: 0;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--accent);
+        }
+
+        textarea {
+            width: 100%;
+            height: 350px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: #e2e8f0;
+            padding: 1rem;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 14px;
+            resize: vertical;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .controls {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        button {
+            background-color: var(--accent);
+            color: #0f172a;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>SamplePaste</h2>
+    <textarea id="paste" placeholder="Paste your code or text here..."></textarea>
+    
+    <div class="controls">
+        <button id="saveBtn" onclick="save()">Save Paste</button>
+    </div>
+</div>
 
 <script>
 async function save() {
-  const text = document.getElementById("paste").value;
-  if (!text) return alert("Empty");
+    const btn = document.getElementById("saveBtn");
+    const text = document.getElementById("paste").value;
+    
+    if (!text.trim()) {
+        alert("Paste cannot be empty!");
+        return;
+    }
 
-  const r = await fetch("/api/create", {
-    method: "POST",
-    body: text
-  });
+    // UI Feedback
+    btn.disabled = true;
+    btn.innerText = "Saving...";
 
-  const id = await r.text();
-  location.href = "/public/" + id;
+    try {
+        const r = await fetch("/api/create", {
+            method: "POST",
+            body: text
+        });
+
+        if (!r.ok) throw new Error("Server error");
+
+        const id = await r.text();
+        location.href = "/public/" + id;
+    } catch (err) {
+        alert("Failed to save: " + err.message);
+        btn.disabled = false;
+        btn.innerText = "Save Paste";
+    }
 }
 </script>
+
 </body>
 </html>
