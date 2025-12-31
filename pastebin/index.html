@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SamplePaste | Secure Snippets</title>
+    <title>Sample - Secure snippets</title>
     <style>
         :root {
             --bg: #0a0a0a;
@@ -149,8 +149,8 @@
 
 <div class="container">
     <header>
-        <h2>// CREATE_NEW_PASTE</h2>
-        <div id="copyStatus">LINK COPIED TO CLIPBOARD</div>
+        <h2>New paste</h2>
+        <div id="copyStatus">Link copied to clipboard</div>
     </header>
 
     <textarea id="paste" placeholder="Waiting for input..." spellcheck="false"></textarea>
@@ -160,18 +160,18 @@
             <div class="control-item">
                 <label>Lifespan:</label>
                 <select id="expiry">
-                    <option value="never">FOREVER (NEVER DELETE)</option>
-                    <option value="burn">BURN ON READ (ONE-TIME VIEW)</option>
-                    <option value="600">10 MINUTES</option>
-                    <option value="3600">1 HOUR</option>
-                    <option value="86400">1 DAY</option>
-                    <option value="604800">1 WEEK</option>
-                    <option value="2592000">1 MONTH</option>
+                    <option value="never">Forever</option>
+                    <option value="burn">Delete on view</option>
+                    <option value="600">10 Minutes</option>
+                    <option value="3600">1 Hour</option>
+                    <option value="86400">1 Day</option>
+                    <option value="604800">1 Week</option>
+                    <option value="2592000">1 Month</option>
                 </select>
             </div>
         </div>
 
-        <button id="saveBtn" onclick="save()">Execute Save</button>
+        <button id="saveBtn" onclick="save()">publish</button>
     </div>
 </div>
 
