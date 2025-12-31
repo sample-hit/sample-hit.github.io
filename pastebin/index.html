@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>SamplePaste</h2>
+
+<textarea id="paste" style="width:100%;height:300px"></textarea>
+<br><br>
+<button onclick="save()">Save</button>
+
+<script>
+async function save() {
+  const text = document.getElementById("paste").value;
+  if (!text) return alert("Empty");
+
+  const r = await fetch("/api/create", {
+    method: "POST",
+    body: text
+  });
+
+  const id = await r.text();
+  location.href = "/public/" + id;
+}
+</script>
+</body>
+</html>
