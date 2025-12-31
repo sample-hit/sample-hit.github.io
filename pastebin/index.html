@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Paste</title>
+    <title>SamplePaste | Dark Mode</title>
     <style>
-        /* Modern CSS Reset & Variable Setup */
         :root {
-            --bg: #0f172a;
-            --card: #1e293b;
-            --text: #f8fafc;
-            --accent: #38bdf8;
-            --accent-hover: #0ea5e9;
+            --bg: #0a0a0a;
+            --card: #141414;
+            --field: #1c1c1c;
+            --text: #e0e0e0;
+            --accent: #ff8c00;
+            --accent-hover: #e67e00;
+            --border: #333333;
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             display: flex;
@@ -26,109 +27,202 @@
         }
 
         .container {
-            width: 90%;
-            max-width: 800px;
+            width: 95%;
+            max-width: 900px;
             background: var(--card);
             padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
         }
 
         h2 {
-            margin-top: 0;
-            font-weight: 700;
-            letter-spacing: -0.025em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.2rem;
             color: var(--accent);
         }
 
         textarea {
             width: 100%;
-            height: 350px;
-            background: #0f172a;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            color: #e2e8f0;
-            padding: 1rem;
-            font-family: 'Fira Code', 'Courier New', monospace;
+            height: 400px;
+            background: var(--field);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: #dcdcdc;
+            padding: 1.2rem;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
             font-size: 14px;
+            line-height: 1.5;
             resize: vertical;
             box-sizing: border-box;
             outline: none;
-            transition: border-color 0.2s;
+            transition: border-color 0.3s ease;
         }
 
         textarea:focus {
             border-color: var(--accent);
         }
 
-        .controls {
+        .bottom-bar {
             margin-top: 1.5rem;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        button {
-            background-color: var(--accent);
-            color: #0f172a;
-            border: none;
-            padding: 0.75rem 2rem;
-            font-weight: 600;
-            border-radius: 6px;
+        .options-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        label {
+            font-size: 0.85rem;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        select {
+            background: var(--field);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 0.6rem;
+            border-radius: 4px;
+            outline: none;
             cursor: pointer;
-            transition: all 0.2s;
         }
 
-        button:hover {
+        select:focus {
+            border-color: var(--accent);
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #000;
+            border: none;
+            padding: 0.8rem 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
             background-color: var(--accent-hover);
-            transform: translateY(-1px);
+            transform: scale(1.02);
         }
 
-        button:disabled {
-            opacity: 0.5;
+        .btn-primary:disabled {
+            background-color: #555;
             cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Status Toast */
+        #status {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: black;
+            border-radius: 4px;
+            font-weight: 600;
+            display: none;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>SamplePaste</h2>
-    <textarea id="paste" placeholder="Paste your code or text here..."></textarea>
+    <header>
+        <h2>New Paste</h2>
+        <div style="font-size: 0.8rem; color: #555;">Guest Session</div>
+    </header>
+
+    <textarea id="paste" placeholder="Enter your text or code here..." spellcheck="false"></textarea>
     
-    <div class="controls">
-        <button id="saveBtn" onclick="save()">Save Paste</button>
+    <div class="bottom-bar">
+        <div class="options-group">
+            <label for="expiry">Auto-Delete In:</label>
+            <select id="expiry">
+                <option value="600">10 Minutes</option>
+                <option value="3600">1 Hour</option>
+                <option value="86400">1 Day</option>
+                <option value="604800">1 Week</option>
+                <option value="2592000">1 Month</option>
+                <option value="0">Never (Burn on Read)</option>
+            </select>
+        </div>
+
+        <button id="saveBtn" class="btn-primary" onclick="save()">Create Paste</button>
     </div>
 </div>
+
+<div id="status">Link Copied to Clipboard!</div>
 
 <script>
 async function save() {
     const btn = document.getElementById("saveBtn");
     const text = document.getElementById("paste").value;
+    const expiry = document.getElementById("expiry").value;
     
     if (!text.trim()) {
-        alert("Paste cannot be empty!");
+        alert("Empty paste content!");
         return;
     }
 
-    // UI Feedback
     btn.disabled = true;
-    btn.innerText = "Saving...";
+    btn.innerText = "Processing...";
 
     try {
-        const r = await fetch("/api/create", {
+        const response = await fetch("/api/create", {
             method: "POST",
+            headers: {
+                "X-Expiration": expiry
+            },
             body: text
         });
 
-        if (!r.ok) throw new Error("Server error");
+        if (!response.ok) throw new Error("Server error");
 
-        const id = await r.text();
-        location.href = "/public/" + id;
+        const id = await response.text();
+        const fullUrl = window.location.origin + "/public/" + id;
+
+        // Automatically copy to clipboard for the user
+        await navigator.clipboard.writeText(fullUrl);
+        
+        showToast();
+
+        // Redirect after a short delay so they see the success toast
+        setTimeout(() => {
+            location.href = "/public/" + id;
+        }, 1500);
+
     } catch (err) {
-        alert("Failed to save: " + err.message);
+        alert("Error saving: " + err.message);
         btn.disabled = false;
-        btn.innerText = "Save Paste";
+        btn.innerText = "Create Paste";
     }
+}
+
+function showToast() {
+    const toast = document.getElementById("status");
+    toast.style.display = "block";
 }
 </script>
 
