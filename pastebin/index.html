@@ -1,1 +1,267 @@
-<script language=JavaScript> html='%3C%21DOCTYPE%20html%3E%0D%0A%3Chtml%20lang%3D%22en%22%3E%0D%0A%3Chead%3E%0D%0A%20%20%20%20%3Cmeta%20charset%3D%22UTF-8%22%3E%0D%0A%20%20%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1.0%22%3E%0D%0A%20%20%20%20%3Ctitle%3ESample%20-%20Secure%20snippets%3C%2Ftitle%3E%0D%0A%20%20%20%20%3Cstyle%3E%0D%0A%20%20%20%20%20%20%20%20%3Aroot%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20--bg%3A%20%230a0a0a%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20--card%3A%20%23121212%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20--field%3A%20%23050505%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20--text%3A%20%23e0e0e0%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20--accent%3A%20%23ff4500%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20--accent-hover%3A%20%23ff6347%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20--border%3A%20%23222222%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20body%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20%27Consolas%27%2C%20%27Monaco%27%2C%20%27Courier%20New%27%2C%20monospace%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20background-color%3A%20var%28--bg%29%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20var%28--text%29%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20flex%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20justify-content%3A%20center%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20align-items%3A%20center%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20min-height%3A%20100vh%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20.container%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2095%25%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20max-width%3A%201000px%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20var%28--card%29%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%201.5rem%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%204px%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%201px%20solid%20var%28--border%29%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%200%200%2030px%20rgba%280%2C0%2C0%2C0.5%29%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20header%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20flex%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20justify-content%3A%20space-between%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20align-items%3A%20center%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20margin-bottom%3A%201rem%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20border-bottom%3A%201px%20solid%20var%28--border%29%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20padding-bottom%3A%2010px%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20h2%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%201.1rem%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20var%28--accent%29%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20text-transform%3A%20uppercase%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20letter-spacing%3A%201px%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20textarea%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20500px%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20var%28--field%29%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%201px%20solid%20var%28--border%29%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%2300ff41%3B%20%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%201.2rem%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2014px%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20line-height%3A%201.6%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20resize%3A%20none%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20box-sizing%3A%20border-box%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20outline%3A%20none%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20transition%3A%200.3s%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20textarea%3Afocus%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20border-color%3A%20var%28--accent%29%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%20inset%200%200%2010px%20rgba%28255%2C%2069%2C%200%2C%200.1%29%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20.bottom-bar%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20margin-top%3A%201.2rem%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20flex%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20justify-content%3A%20space-between%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20align-items%3A%20center%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20gap%3A%2015px%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20.settings-group%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20flex%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20gap%3A%2020px%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20align-items%3A%20center%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20.control-item%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20flex%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20align-items%3A%20center%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20gap%3A%208px%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20label%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%200.75rem%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23666%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20text-transform%3A%20uppercase%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20select%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20var%28--field%29%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20var%28--text%29%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%201px%20solid%20var%28--border%29%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%206px%2010px%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20outline%3A%20none%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20cursor%3A%20pointer%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20inherit%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20select%3Afocus%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20border-color%3A%20var%28--accent%29%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20button%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20background-color%3A%20var%28--accent%29%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23000%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%20none%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2012px%2030px%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20font-weight%3A%20900%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20cursor%3A%20pointer%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20text-transform%3A%20uppercase%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20transition%3A%200.2s%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20letter-spacing%3A%201px%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20button%3Ahover%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20background-color%3A%20var%28--accent-hover%29%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%200%200%2015px%20rgba%28255%2C%2069%2C%200%2C%200.4%29%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20button%3Adisabled%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20background-color%3A%20%23222%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23444%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20cursor%3A%20not-allowed%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%20none%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20%20%20%20%20%23copyStatus%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%2300ff41%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%200.8rem%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20none%3B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20font-weight%3A%20bold%3B%0D%0A%20%20%20%20%20%20%20%20%7D%0D%0A%20%20%20%20%3C%2Fstyle%3E%0D%0A%3C%2Fhead%3E%0D%0A%3Cbody%3E%0D%0A%0D%0A%3Cdiv%20class%3D%22container%22%3E%0D%0A%20%20%20%20%3Cheader%3E%0D%0A%20%20%20%20%20%20%20%20%3Ch2%3ENew%20paste%3C%2Fh2%3E%0D%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22copyStatus%22%3ELink%20copied%20to%20clipboard%3C%2Fdiv%3E%0D%0A%20%20%20%20%3C%2Fheader%3E%0D%0A%0D%0A%20%20%20%20%3Ctextarea%20id%3D%22paste%22%20placeholder%3D%22Waiting%20for%20input...%22%20spellcheck%3D%22false%22%3E%3C%2Ftextarea%3E%0D%0A%20%20%20%20%0D%0A%20%20%20%20%3Cdiv%20class%3D%22bottom-bar%22%3E%0D%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22settings-group%22%3E%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22control-item%22%3E%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Clabel%3ELifespan%3A%3C%2Flabel%3E%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cselect%20id%3D%22expiry%22%3E%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Coption%20value%3D%22never%22%3EForever%3C%2Foption%3E%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Coption%20value%3D%22burn%22%3EDelete%20on%20view%3C%2Foption%3E%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Coption%20value%3D%22600%22%3E10%20Minutes%3C%2Foption%3E%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Coption%20value%3D%223600%22%3E1%20Hour%3C%2Foption%3E%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Coption%20value%3D%2286400%22%3E1%20Day%3C%2Foption%3E%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Coption%20value%3D%22604800%22%3E1%20Week%3C%2Foption%3E%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Coption%20value%3D%222592000%22%3E1%20Month%3C%2Foption%3E%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fselect%3E%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0D%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0D%0A%0D%0A%20%20%20%20%20%20%20%20%3Cbutton%20id%3D%22saveBtn%22%20onclick%3D%22save%28%29%22%3Epublish%3C%2Fbutton%3E%0D%0A%20%20%20%20%3C%2Fdiv%3E%0D%0A%3C%2Fdiv%3E%0D%0A%0D%0A%3Cscript%3E%0D%0Aasync%20function%20save%28%29%20%7B%0D%0A%20%20%20%20const%20btn%20%3D%20document.getElementById%28%22saveBtn%22%29%3B%0D%0A%20%20%20%20const%20text%20%3D%20document.getElementById%28%22paste%22%29.value%3B%0D%0A%20%20%20%20const%20expiryValue%20%3D%20document.getElementById%28%22expiry%22%29.value%3B%0D%0A%20%20%20%20%0D%0A%20%20%20%20if%20%28%21text.trim%28%29%29%20%7B%0D%0A%20%20%20%20%20%20%20%20alert%28%22TERMINAL%20ERROR%3A%20CONTENT%20CANNOT%20BE%20EMPTY%22%29%3B%0D%0A%20%20%20%20%20%20%20%20return%3B%0D%0A%20%20%20%20%7D%0D%0A%0D%0A%20%20%20%20btn.disabled%20%3D%20true%3B%0D%0A%20%20%20%20btn.innerText%20%3D%20%22UPLOADING...%22%3B%0D%0A%0D%0A%20%20%20%20try%20%7B%0D%0A%20%20%20%20%20%20%20%20const%20response%20%3D%20await%20fetch%28%22%2Fapi%2Fcreate%22%2C%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20method%3A%20%22POST%22%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20headers%3A%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22X-Expiry%22%3A%20expiryValue%20%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20body%3A%20text%0D%0A%20%20%20%20%20%20%20%20%7D%29%3B%0D%0A%0D%0A%20%20%20%20%20%20%20%20if%20%28%21response.ok%29%20throw%20new%20Error%28%22API_REJECTION%22%29%3B%0D%0A%0D%0A%20%20%20%20%20%20%20%20const%20id%20%3D%20await%20response.text%28%29%3B%0D%0A%20%20%20%20%20%20%20%20const%20url%20%3D%20window.location.origin%20%2B%20%22%2Fpublic%2F%22%20%2B%20id%3B%0D%0A%0D%0A%20%20%20%20%20%20%20%20%2F%2F%20Auto-copy%20to%20clipboard%0D%0A%20%20%20%20%20%20%20%20await%20navigator.clipboard.writeText%28url%29%3B%0D%0A%20%20%20%20%20%20%20%20%0D%0A%20%20%20%20%20%20%20%20document.getElementById%28%22copyStatus%22%29.style.display%20%3D%20%22block%22%3B%0D%0A%0D%0A%20%20%20%20%20%20%20%20%2F%2F%20Delay%20to%20allow%20user%20to%20see%20the%20success%20message%0D%0A%20%20%20%20%20%20%20%20setTimeout%28%28%29%20%3D%3E%20%7B%0D%0A%20%20%20%20%20%20%20%20%20%20%20%20location.href%20%3D%20%22%2Fpublic%2F%22%20%2B%20id%3B%0D%0A%20%20%20%20%20%20%20%20%7D%2C%201000%29%3B%0D%0A%0D%0A%20%20%20%20%7D%20catch%20%28err%29%20%7B%0D%0A%20%20%20%20%20%20%20%20alert%28%22CRITICAL%20ERROR%3A%20FAILED%20TO%20CONNECT%20TO%20DATABASE%22%29%3B%0D%0A%20%20%20%20%20%20%20%20btn.disabled%20%3D%20false%3B%0D%0A%20%20%20%20%20%20%20%20btn.innerText%20%3D%20%22Execute%20Save%22%3B%0D%0A%20%20%20%20%7D%0D%0A%7D%0D%0A%3C%2Fscript%3E%0D%0A%0D%0A%3C%2Fbody%3E%0D%0A%3C%2Fhtml%3E';d=unescape(html);document.write(d);</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SamplePaste | Secure Snippets</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --card: #121212;
+            --field: #050505;
+            --text: #e0e0e0;
+            --accent: #ff4500;
+            --accent-hover: #ff6347;
+            --border: #222222;
+        }
+
+        body {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1000px;
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 500px;
+            background: var(--field);
+            border: 1px solid var(--border);
+            color: #00ff41; 
+            padding: 1.2rem;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: none;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: inset 0 0 10px rgba(255, 69, 0, 0.1);
+        }
+
+        textarea.dragover {
+            border: 2px dashed var(--accent);
+            background: #1a0a00;
+        }
+
+        .bottom-bar {
+            margin-top: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .settings-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .control-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        select {
+            background: var(--field);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 6px 10px;
+            outline: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        select:focus {
+            border-color: var(--accent);
+        }
+
+        button {
+            background-color: var(--accent);
+            color: #000;
+            border: none;
+            padding: 12px 30px;
+            font-weight: 900;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.2s;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
+        }
+
+        button:disabled {
+            background-color: #222;
+            color: #444;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        #copyStatus {
+            color: #00ff41;
+            font-size: 0.8rem;
+            display: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h2>// CREATE_NEW_PASTE</h2>
+        <div id="copyStatus">LINK COPIED TO CLIPBOARD</div>
+    </header>
+
+    <textarea id="paste" placeholder="Waiting for input... (or drag & drop file)" spellcheck="false"></textarea>
+    
+    <div class="bottom-bar">
+        <div class="settings-group">
+            <div class="control-item">
+                <label>Lifespan:</label>
+                <select id="expiry">
+                    <option value="never">FOREVER (NEVER DELETE)</option>
+                    <option value="burn">BURN ON READ (ONE-TIME VIEW)</option>
+                    <option value="600">10 MINUTES</option>
+                    <option value="3600">1 HOUR</option>
+                    <option value="86400">1 DAY</option>
+                    <option value="604800">1 WEEK</option>
+                    <option value="2592000">1 MONTH</option>
+                </select>
+            </div>
+        </div>
+
+        <button id="saveBtn" onclick="save()">Execute Save</button>
+    </div>
+</div>
+
+<script>
+const textarea = document.getElementById("paste");
+const btn = document.getElementById("saveBtn");
+
+textarea.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    textarea.classList.add("dragover");
+});
+
+textarea.addEventListener("dragleave", () => {
+    textarea.classList.remove("dragover");
+});
+
+textarea.addEventListener("drop", async (e) => {
+    e.preventDefault();
+    textarea.classList.remove("dragover");
+    const file = e.dataTransfer.files[0];
+    if (file) {
+        uploadFile(file);
+    }
+});
+
+async function uploadFile(file) {
+    btn.disabled = true;
+    btn.innerText = "UPLOADING FILE...";
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+        const response = await fetch("/upload", {
+            method: "POST",
+            body: formData
+        });
+        if (!response.ok) throw new Error();
+        const id = await response.text();
+        handleFinish(id);
+    } catch (err) {
+        alert("UPLOAD ERROR");
+        btn.disabled = false;
+        btn.innerText = "Execute Save";
+    }
+}
+
+async function save() {
+    const text = textarea.value;
+    const expiryValue = document.getElementById("expiry").value;
+    
+    if (!text.trim()) {
+        alert("TERMINAL ERROR: CONTENT CANNOT BE EMPTY");
+        return;
+    }
+
+    btn.disabled = true;
+    btn.innerText = "UPLOADING...";
+
+    try {
+        const response = await fetch("/api/create", {
+            method: "POST",
+            headers: { "X-Expiry": expiryValue },
+            body: text
+        });
+
+        if (!response.ok) throw new Error();
+        const id = await response.text();
+        handleFinish(id);
+    } catch (err) {
+        alert("CRITICAL ERROR: FAILED TO CONNECT");
+        btn.disabled = false;
+        btn.innerText = "Execute Save";
+    }
+}
+
+function handleFinish(id) {
+    const url = "https://cdn.getsample.lol/" + id;
+    navigator.clipboard.writeText(url).then(() => {
+        document.getElementById("copyStatus").style.display = "block";
+        setTimeout(() => {
+            location.href = "/public/" + id;
+        }, 1000);
+    });
+}
+</script>
+
+</body>
+</html>
