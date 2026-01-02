@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Tools</title>
+    <title>Sample-Tools</title>
     <style>
         :root {
             --bg: #05070a;
@@ -191,7 +191,7 @@
         <h2 class="media-h2">Media Downloader</h2>
         <input type="text" id="mediaUrl" class="link-input" placeholder="Paste YouTube link...">
         <div class="media-status" id="mediaStatus">
-            Ready to extract via RapidAPI...
+            Ready to extract via Invidious...
         </div>
         <div class="bottom-bar">
             <button class="btn-media" id="fetchBtn" onclick="fetchMedia()">Fetch .mp4</button>
@@ -239,7 +239,7 @@
         
         if (!urlField.value) return alert("Please paste a URL first");
         
-        status.innerText = "Requesting video from RapidAPI...";
+        status.innerText = "Connecting to nodes... (Try 1/4)";
         status.style.color = "#8b949e";
         btn.disabled = true;
         
@@ -253,11 +253,19 @@
             const data = await res.json();
             
             if (res.ok && data.download_url) {
+                // Try to trigger actual download
+                const a = document.createElement('a');
+                a.href = data.download_url;
+                a.download = "video.mp4";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
                 showSuccess(data.download_url);
-                status.innerText = "Success! Link copied.";
+                status.innerText = "Success! Extraction complete.";
                 status.style.color = "#7ee787";
             } else { 
-                throw new Error(data.error || "RapidAPI extraction failed"); 
+                throw new Error(data.error || "All nodes failed to respond."); 
             }
         } catch (e) {
             status.innerText = "Error: " + e.message;
@@ -269,7 +277,7 @@
 
     function showSuccess(url) {
         navigator.clipboard.writeText(url);
-        document.getElementById('successMsg').innerText = "Link copied to clipboard!";
+        document.getElementById('successMsg').innerText = "Link copied & Download started!";
         overlay.style.display = 'flex';
     }
 
