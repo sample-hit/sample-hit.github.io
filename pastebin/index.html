@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SamplePaste | Blue Protocol</title>
+    <title>Sample.lol - Paste</title>
     <style>
         :root {
             --bg: #05070a;
@@ -279,7 +279,9 @@
                 body: text
             });
             const id = await response.text();
-            showSuccess("https://getsample.lol/public/" + id);
+            
+            // Link now includes /raw at the end
+            showSuccess("https://getsample.lol/public/" + id + "/raw");
         } catch (err) {
             alert("host fail, please wait until we fix it");
             btn.disabled = false;
