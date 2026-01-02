@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Multi-Pastebin</title>
+    <title>Sample Tools</title>
     <style>
         :root {
             --bg: #05070a;
@@ -189,9 +189,9 @@
 
     <div class="panel">
         <h2 class="media-h2">Media Downloader</h2>
-        <input type="text" id="mediaUrl" class="link-input" placeholder="Paste social media link...">
+        <input type="text" id="mediaUrl" class="link-input" placeholder="Paste YouTube link...">
         <div class="media-status" id="mediaStatus">
-            Ready to extract via Apify...
+            Ready to extract via RapidAPI...
         </div>
         <div class="bottom-bar">
             <button class="btn-media" id="fetchBtn" onclick="fetchMedia()">Fetch .mp4</button>
@@ -239,7 +239,7 @@
         
         if (!urlField.value) return alert("Please paste a URL first");
         
-        status.innerText = "Connecting to Apify... (Wait 10-15s)";
+        status.innerText = "Requesting video from RapidAPI...";
         status.style.color = "#8b949e";
         btn.disabled = true;
         
@@ -257,12 +257,11 @@
                 status.innerText = "Success! Link copied.";
                 status.style.color = "#7ee787";
             } else { 
-                throw new Error(data.error || "Extraction failed"); 
+                throw new Error(data.error || "RapidAPI extraction failed"); 
             }
         } catch (e) {
             status.innerText = "Error: " + e.message;
             status.style.color = "#f85149";
-            console.error("Extraction error:", e);
         } finally {
             btn.disabled = false;
         }
