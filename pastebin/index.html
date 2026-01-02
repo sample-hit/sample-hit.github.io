@@ -182,10 +182,10 @@
     </div>
 
     <div class="panel">
-        <h2 class="media-h2" style="color:var(--media-accent)">Media Downloader</h2>
-        <input type="text" id="mediaUrl" class="link-input" placeholder="YouTube, TikTok, X, IG link...">
+        <h2 class="media-h2">Media Downloader</h2>
+        <input type="text" id="mediaUrl" class="link-input" placeholder="Paste social media link...">
         <div class="media-status" id="mediaStatus">
-            Ready to extract mp4...
+            Using Apify Engine...
         </div>
         <div class="bottom-bar">
             <button class="btn-media" id="fetchBtn" onclick="fetchMedia()">Fetch .mp4</button>
@@ -213,11 +213,12 @@
             const res = await fetch("https://getsample.lol/upload", { method: "POST", body: formData });
             const id = await res.text();
             showSuccess("https://cdn.getsample.lol/" + id);
-        } catch (e) { alert("Fail"); }
+        } catch (e) { alert("Fail"); btn.innerText = "Publish to CDN"; }
     }
 
     async function saveText() {
         const text = document.getElementById('textInput').value;
+        if(!text) return;
         try {
             const res = await fetch("https://getsample.lol/api/create", { method: "POST", body: text });
             const id = await res.text();
@@ -230,8 +231,10 @@
         const status = document.getElementById('mediaStatus');
         const btn = document.getElementById('fetchBtn');
         if (!url) return;
-        status.innerText = "Extracting video... please wait.";
+        
+        status.innerText = "Processing link with Apify... takes 5-10 seconds.";
         btn.disabled = true;
+        
         try {
             const res = await fetch("https://getsample.lol/api/extract", {
                 method: "POST",
@@ -242,20 +245,22 @@
             if (data.download_url) {
                 showSuccess(data.download_url);
                 status.innerText = "Success!";
-            } else { throw new Error(); }
+            } else { 
+                throw new Error(data.error); 
+            }
         } catch (e) {
-            status.innerText = "Error extracting. Try another link.";
+            status.innerText = "Error: Check your Apify Token or Link.";
         }
         btn.disabled = false;
     }
 
     function showSuccess(url) {
         navigator.clipboard.writeText(url);
-        document.getElementById('successMsg').innerText = "Direct link copied!";
+        document.getElementById('successMsg').innerText = "Link copied to clipboard!";
         overlay.style.display = 'flex';
     }
 
-    function closeOverlay() { overlay.style.display = 'none'; location.reload(); }
+    function closeOverlay() { overlay.style.display = 'none'; }
 </script>
 </body>
 </html>
