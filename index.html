@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sample.hit - Power Beyond Limits</title>
 
-    <link rel="icon" type="image/png" href="https://cdn.getsample.lol/4pxca7yqi8">
-    <link rel="shortcut icon" type="image/png" href="https://cdn.getsample.lol/4pxca7yqi8">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/MxdjWX42/image.png">
+    <link rel="shortcut icon" type="image/png" href="https://i.ibb.co/MxdjWX42/image.png">
 
     <meta property="og:title" content="Sample.hit">
-    <meta property="og:description" content="Power Beyond Limits - The most sophisticated script overhaul.">
-    <meta property="og:image" content="https://cdn.getsample.lol/4pxca7yqi8">
+    <meta property="og:description" content="Power Beyond Limits - The most sophisticated script.">
+    <meta property="og:image" content="https://i.ibb.co/MxdjWX42/image.png">
     <meta name="theme-color" content="#ff6a00">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -33,6 +33,7 @@
             min-height: 100vh;
         }
 
+        /* DYNAMIC GRADIENT BACKGROUND */
         .mesh-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -51,6 +52,7 @@
             100% { transform: scale(1.2); }
         }
 
+        /* HERO SECTION */
         #landing-page {
             height: 100vh;
             display: flex;
@@ -134,6 +136,7 @@
             height: 100vh; 
             width: 100%; 
             background: transparent;
+            display: flex; 
         }
         
         .sidebar { 
@@ -279,10 +282,10 @@
         </div>
     </div>
 
-    <div id="doc-section">
+    <div id="doc-section" style="display:none;">
         <div class="sidebar">
             <div style="margin-bottom: 50px; text-align: left; padding-left: 15px;">
-                <img src="https://cdn.getsample.lol/4pxca7yqi8" style="width:50px; border-radius: 12px; margin-bottom: 15px;">
+                <img src="https://i.ibb.co/MxdjWX42/image.png" style="width:50px; border-radius: 12px; margin-bottom: 15px;">
                 <h2 style="font-weight: 800; letter-spacing: -1px;">Sample<span style="color:var(--primary)">.hit</span></h2>
             </div>
             
@@ -297,13 +300,15 @@
             <div id="overview" class="tab-content active">
                 <h2 style="font-size: 3rem; font-weight: 800; margin-bottom: 25px; letter-spacing: -1px;">The New Standard</h2>
                 <p style="line-height: 1.8; color: #aaa; font-size: 1.1rem; margin-bottom: 20px;">Sample.hit isn't just a script; it's a complete mechanical overhaul. Engineered to outperform every competitor in raw execution speed.</p>
+                <p style="line-height: 1.8; color: #aaa; font-size: 1.1rem; margin-bottom: 20px;">Experience frame-perfect targeting and movement physics that feel native to the game. No stutter, no crashes—just pure performance.</p>
                 
-                <img src="https://i.ibb.co/MxdjWX42/image.png" class="small-ui-img" alt="Sample UI Preview">
+                <img src="https://cdn.getsample.lol/4pxca7yqi8" class="small-ui-img" alt="Sample UI">
             </div>
 
             <div id="pricing" class="tab-content">
                 <h2 style="font-size: 3rem; font-weight: 800; margin-bottom: 10px;">Plans</h2>
                 <p style="color: #666; margin-bottom: 40px;">Select the license that fits your playstyle.</p>
+                
                 <div class="pricing-grid">
                     <div class="price-card">
                         <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Most Popular</span>
@@ -312,6 +317,7 @@
                         <p style="color: #777; line-height: 1.5; margin-bottom: 25px;">Unlimited access to all future updates and priority support.</p>
                         <a href="#" class="btn btn-primary" style="display:block; text-align:center; padding: 15px; font-size: 1rem;">Purchase License</a>
                     </div>
+                    
                     <div class="price-card">
                         <span style="color: #666; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Free Plan</span>
                         <div class="price-tag">FREE</div>
@@ -325,15 +331,40 @@
             <div id="links" class="tab-content">
                 <h2 style="font-size: 3rem; font-weight: 800; margin-bottom: 10px;">Our Sources</h2>
                 <p style="color: #666; margin-bottom: 40px;">Protect your account by using only official links.</p>
-                <a href="#" class="link-item"><div class="link-info"><b>Main Domain</b><span>getsample.lol</span></div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></a>
-                <a href="#" class="link-item"><div class="link-info"><b>Our Discord</b><span>discord.gg/sample</span></div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></a>
-                <a href="#" class="link-item"><div class="link-info"><b>Lifetime license</b><span>getsample.lol/lifetime</span></div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></a>
+                
+                <a href="#" class="link-item">
+                    <div class="link-info"><b>Main Domain</b><span>getsample.lol</span></div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                </a>
+
+                <a href="#" class="link-item">
+                    <div class="link-info"><b>Our Discord</b><span>discord.gg/sample</span></div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                </a>
+
+                                <a href="#" class="link-item">
+                    <div class="link-info"><b>Lifetime license</b><span>getsample.lol/lifetime</span></div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                </a>
+
+                                <a href="#" class="link-item">
+                    <div class="link-info"><b>Text + File Host</b><span>getsample.lol/pastebin</span></div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                </a>
+                
+                <div style="background: rgba(255, 68, 68, 0.05); border: 1px solid rgba(255, 68, 68, 0.2); padding: 25px; border-radius: 18px; margin-top: 40px; display: flex; gap: 20px; align-items: center;">
+                    <div style="font-size: 2rem;">⚠️</div>
+                    <div>
+                        <b style="color: #ff4444; display: block; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px;">Security Protocol</b>
+                        <p style="font-size: 0.95rem; color: #888; margin: 0;">Any site not listed above is a phishing attempt. We will never ask for your personal info.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="notification" class="notif">
-        <div class="notif-img" style="background-image: url('https://cdn.getsample.lol/4pxca7yqi8');"></div>
+        <div class="notif-img"></div>
         <div class="notif-text">
             <b id="notif-title">New Purchase</b>
             <span id="notif-item">Lifetime License Issued</span>
@@ -347,25 +378,33 @@
             document.getElementById('doc-section').style.display = 'flex';
             triggerNotif("Welcome back", "System ready for execution");
         }
+
         function openTab(evt, tabName) {
             let contents = document.getElementsByClassName("tab-content");
             for (let i = 0; i < contents.length; i++) contents[i].classList.remove("active");
+
             let buttons = document.getElementsByClassName("tab-btn");
             for (let i = 0; i < buttons.length; i++) buttons[i].classList.remove("active");
+
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
+
         function triggerNotif(title, desc) {
             const notif = document.getElementById('notification');
             document.getElementById('notif-title').innerText = title;
             document.getElementById('notif-item').innerText = desc;
+            
             notif.classList.add('show');
-            setTimeout(() => { notif.classList.remove('show'); }, 4000);
+            setTimeout(() => {
+                notif.classList.remove('show');
+            }, 4000);
         }
         setInterval(() => {
-            if(Math.random() > 0.8) {
+            if(Math.random() > 0.7) {
                 const actions = ["Lifetime License", "60 Min Key", "Priority Support"];
-                triggerNotif("Key Generated", actions[Math.floor(Math.random()*actions.length)] + " issued");
+                const action = actions[Math.floor(Math.random()*actions.length)];
+                triggerNotif("Key Generated", action + " issued");
             }
         }, 15000);
     </script>
