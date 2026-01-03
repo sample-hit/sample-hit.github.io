@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strikes Executor | Unrivaled Performance</title>
+    <title>Strikes Executor</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @keyframes textGradient {
@@ -25,6 +25,14 @@
             background: #1e293b;
             border-radius: 10px;
         }
+        html {
+            scroll-behavior: smooth;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-50 font-sans selection:bg-blue-500/30 selection:text-blue-200 thin-scrollbar">
@@ -44,14 +52,13 @@
         <div class="mx-auto max-w-5xl px-4">
             <div class="relative flex items-center justify-between rounded-2xl border border-white/10 bg-slate-900/60 px-6 py-3 shadow-lg backdrop-blur-md">
                 <div class="flex items-center gap-3 group">
-                    <div class="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(37,99,235,0.5)]">
-                        <span class="font-bold text-white">S</span>
-                    </div>
+                    <img src="https://cdn.getsample.lol/absxx9wm6k" alt="Logo" class="h-9 w-9 rounded-lg shadow-[0_0_15px_rgba(37,99,235,0.3)] group-hover:scale-110 transition-transform">
                     <span class="text-sm font-bold uppercase tracking-widest text-slate-200">Strikes</span>
                 </div>
-                <nav class="hidden items-center gap-4 md:flex">
-                    <a href="#" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Features</a>
-                    <a href="#" class="rounded-xl bg-blue-600 px-5 py-2 text-sm font-bold text-white transition-all hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">Download</a>
+                <nav class="hidden items-center gap-6 md:flex">
+                    <a href="#features" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Features</a>
+                    <a href="#pricing" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Pricing</a>
+                    <a href="https://discord.gg/XMRctajMVB" target="_blank" class="rounded-xl bg-blue-600 px-5 py-2 text-sm font-bold text-white transition-all hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">Download</a>
                 </nav>
             </div>
         </div>
@@ -74,17 +81,17 @@
                 <span class="animate-text-gradient bg-gradient-to-r from-blue-600 via-sky-400 to-blue-600 bg-clip-text text-transparent">Stay Hidden.</span>
             </h1>
 
-            <p class="mt-8 max-w-2xl text-lg text-slate-400 sm:text-xl">
-                The most reliable Roblox executor designed for maximum power and seamless execution. 
+            <p class="mt-8 max-w-2xl text-lg text-slate-400 sm:text-xl font-light">
+                Experience fast executions and injections. Built for stability, speed and anti-detections.
             </p>
 
             <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-                <button class="rounded-full bg-white px-8 py-4 text-sm font-bold text-slate-950 transition-all hover:bg-slate-200 hover:shadow-xl">
+                <a href="https://discord.gg/XMRctajMVB" class="rounded-full bg-white px-8 py-4 text-sm font-bold text-slate-950 transition-all hover:bg-slate-200 hover:shadow-xl">
                     Get Started Now
-                </button>
-                <button class="rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all hover:bg-white/10">
-                    Join Community
-                </button>
+                </a>
+                <a href="https://discord.gg/XMRctajMVB" class="rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all hover:bg-white/10">
+                    Join Discord
+                </a>
             </div>
 
             <div class="mt-20 relative group">
@@ -93,7 +100,7 @@
             </div>
         </section>
 
-        <div class="mt-32">
+        <div id="features" class="mt-32">
             <div class="my-16 flex items-center gap-4">
                 <div class="h-px flex-1 bg-gradient-to-r from-transparent via-slate-500/20 to-transparent"></div>
                 <span class="text-[0.68rem] uppercase tracking-[0.3em] text-slate-500">Powerful Features</span>
@@ -104,16 +111,16 @@
                 <div class="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition-all hover:-translate-y-1 hover:bg-white/[0.04] hover:border-blue-500/30">
                     <div class="relative z-10">
                         <div class="mb-4 text-4xl font-bold text-blue-500">100%</div>
-                        <h3 class="mb-2 text-xl font-bold text-white">UNC Score</h3>
-                        <p class="text-sm leading-relaxed text-slate-400">Full Unified Naming Convention support. If the script exists, Strikes will run it without hesitation.</p>
+                        <h3 class="mb-2 text-xl font-bold text-white">UNC Support</h3>
+                        <p class="text-sm leading-relaxed text-slate-400">Full Unified Naming Convention support. Execute every complex script without errors or missing functions.</p>
                     </div>
                 </div>
 
                 <div class="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition-all hover:-translate-y-1 hover:bg-white/[0.04] hover:border-blue-500/30">
                     <div class="relative z-10">
-                        <div class="mb-4 text-4xl font-bold text-blue-400">100%</div>
-                        <h3 class="mb-2 text-xl font-bold text-white">sUNC Support</h3>
-                        <p class="text-sm leading-relaxed text-slate-400">Industry-leading sUNC compatibility. Perfect performance for complex drawing and environment scripts.</p>
+                        <div class="mb-4 text-4xl font-bold text-sky-400">100%</div>
+                        <h3 class="mb-2 text-xl font-bold text-white">sUNC Score</h3>
+                        <p class="text-sm leading-relaxed text-slate-400">Industry-leading script environment compatibility. Perfect performance for drawing and visual-heavy scripts.</p>
                     </div>
                 </div>
 
@@ -123,28 +130,61 @@
                             <h3 class="text-xl font-bold text-white">Raknet Library</h3>
                             <span class="rounded bg-blue-600/20 px-2 py-1 text-[10px] font-bold text-blue-400 uppercase tracking-tighter">Coming Soon</span>
                         </div>
-                        <p class="text-sm leading-relaxed text-slate-400">Advanced packet manipulation and networking utilities are currently in heavy development.</p>
+                        <p class="text-sm leading-relaxed text-slate-400">Advanced packet manipulation and networking utilities are currently in active development for elite users.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="pricing" class="mt-32">
+            <div class="my-16 flex items-center gap-4">
+                <div class="h-px flex-1 bg-gradient-to-r from-transparent via-slate-500/20 to-transparent"></div>
+                <span class="text-[0.68rem] uppercase tracking-[0.3em] text-slate-500">Pricing Models</span>
+                <div class="h-px flex-1 bg-gradient-to-r from-transparent via-slate-500/20 to-transparent"></div>
+            </div>
+
+            <section class="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+                <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-blue-600/10 to-transparent p-10 transition-all hover:bg-blue-600/20 hover:border-blue-500/50">
+                    <div class="relative z-10 text-center">
+                        <h3 class="text-2xl font-bold text-white mb-2">Lifetime License</h3>
+                        <div class="text-4xl font-black text-white my-6">$4.99</div>
+                        <ul class="text-slate-400 text-sm space-y-3 mb-8 text-left inline-block">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Permanent Access
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Priority Support
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Instant Updates
+                            </li>
+                        </ul>
+                        <a href="https://discord.gg/XMRctajMVB" class="block w-full py-3 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-500 transition-colors">Purchase Now</a>
                     </div>
                 </div>
 
-                <div class="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition-all hover:-translate-y-1 hover:bg-white/[0.04] hover:border-blue-500/30">
-                    <div class="relative z-10">
-                        <h3 class="mb-2 text-xl font-bold text-white">Undetected</h3>
-                        <p class="text-sm leading-relaxed text-slate-400">Strikes uses custom bypass technology to remain completely undetected by anti-cheat measures.</p>
-                    </div>
-                </div>
-                
-                <div class="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition-all hover:-translate-y-1 hover:bg-white/[0.04] hover:border-blue-500/30">
-                    <div class="relative z-10">
-                        <h3 class="mb-2 text-xl font-bold text-white">Stability</h3>
-                        <p class="text-sm leading-relaxed text-slate-400">Built on a crash-resilient core to ensure your long-term farming sessions are never interrupted.</p>
-                    </div>
-                </div>
-
-                <div class="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition-all hover:-translate-y-1 hover:bg-white/[0.04] hover:border-blue-500/30">
-                    <div class="relative z-10">
-                        <h3 class="mb-2 text-xl font-bold text-white">Fast Injection</h3>
-                        <p class="text-sm leading-relaxed text-slate-400">Optimized DLL injection speeds that get you into the action in under a second.</p>
+                <div class="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] p-10 transition-all hover:bg-white/[0.05]">
+                    <div class="relative z-10 text-center">
+                        <h3 class="text-2xl font-bold text-white mb-2">Key System</h3>
+                        <div class="text-4xl font-black text-white my-6">Free</div>
+                        <ul class="text-slate-400 text-sm space-y-3 mb-8 text-left inline-block">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                24 Hour License Duration
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Standard Ad-Link Key
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Full Executor Features
+                            </li>
+                        </ul>
+                        <a href="https://discord.gg/XMRctajMVB" class="block w-full py-3 rounded-xl border border-white/10 text-white font-bold hover:bg-white/5 transition-colors">Get Key</a>
                     </div>
                 </div>
             </section>
@@ -152,6 +192,10 @@
     </main>
 
     <footer class="border-t border-white/5 py-12 text-center text-xs text-slate-600">
+        <div class="flex items-center justify-center gap-4 mb-4">
+            <img src="https://cdn.getsample.lol/absxx9wm6k" alt="Logo" class="h-6 w-6 opacity-30 grayscale">
+            <span class="tracking-widest uppercase font-bold text-slate-500">Strikes Project</span>
+        </div>
         <p>&copy; 2026 STRIKES PROJECT. NOT AFFILIATED WITH ROBLOX CORPORATION.</p>
     </footer>
 
